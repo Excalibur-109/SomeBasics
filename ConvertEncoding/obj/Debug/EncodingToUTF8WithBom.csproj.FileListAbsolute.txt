@@ -1,0 +1,8 @@
+D:\ProjectBasic\ConvertEncoding\bin\Debug\ConvertEncoding.exe.config
+D:\ProjectBasic\ConvertEncoding\bin\Debug\ConvertEncoding.exe
+D:\ProjectBasic\ConvertEncoding\bin\Debug\ConvertEncoding.pdb
+D:\ProjectBasic\ConvertEncoding\obj\Debug\EncodingToUTF8WithBom.csproj.AssemblyReference.cache
+D:\ProjectBasic\ConvertEncoding\obj\Debug\EncodingToUTF8WithBom.csproj.SuggestedBindingRedirects.cache
+D:\ProjectBasic\ConvertEncoding\obj\Debug\EncodingToUTF8WithBom.csproj.CoreCompileInputs.cache
+D:\ProjectBasic\ConvertEncoding\obj\Debug\ConvertEncoding.exe
+D:\ProjectBasic\ConvertEncoding\obj\Debug\ConvertEncoding.pdb

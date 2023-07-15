@@ -1,0 +1,12 @@
+D:\ProjectBasic\SmartGame\obj\Debug\SmartGame.csproj.AssemblyReference.cache
+D:\ProjectBasic\SmartGame\obj\Debug\SmartGame.csproj.SuggestedBindingRedirects.cache
+D:\ProjectBasic\SmartGame\obj\Debug\SmartGame.csproj.CoreCompileInputs.cache
+D:\ProjectBasic\SmartGame\bin\Debug\SmartGame.exe.config
+D:\ProjectBasic\SmartGame\bin\Debug\SmartGame.exe
+D:\ProjectBasic\SmartGame\bin\Debug\SmartGame.pdb
+D:\ProjectBasic\SmartGame\bin\Debug\Common.exe
+D:\ProjectBasic\SmartGame\bin\Debug\Common.pdb
+D:\ProjectBasic\SmartGame\bin\Debug\Common.exe.config
+D:\ProjectBasic\SmartGame\obj\Debug\SmartGame.csproj.CopyComplete
+D:\ProjectBasic\SmartGame\obj\Debug\SmartGame.exe
+D:\ProjectBasic\SmartGame\obj\Debug\SmartGame.pdb
