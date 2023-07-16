@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Common;
 using static System.Console;
@@ -10,6 +11,8 @@ namespace SmartGame
 {
     public class Game : Singleton<Game>
     {
+        static ConsoleKey keyPressed = ConsoleKey.NoName;
+
         public void Start()
         {
             ConsoleKey key = ConsoleKey.Spacebar;
@@ -34,7 +37,6 @@ namespace SmartGame
 
         private void GameLoop()
         {
-            Map.Instance.SetBorder(new Position(30, 30));
             //Obstacle o1 = new Obstacle();
             //o1.SetPos(new Position(4, 5));
             //Obstacle o2 = new Obstacle();
@@ -47,30 +49,30 @@ namespace SmartGame
             Player player = new Player();
             player.SetPos(new Position(15, 15));
             Map.Instance.AddObject(player);
+            Map.Instance.SetBorder(new Position(30, 30));
             while (true)
             {
-                Clear();
-                player.UpdateInput(ReadKey().Key);
-                Map.Instance.Build();
-
-                if (Exit())
+                keyPressed = ReadKey(true).Key;
+                if (keyPressed == ConsoleKey.Escape)
                 {
-                    WriteLine("Game Exit...");
                     break;
                 }
+                else
+                {
+                    player.UpdateInput(keyPressed);
+                }
+
+                Clear();
+
+                Map.Instance.Build();
             }
+            WriteLine("Game Exit...");
         }
 
         private ConsoleKey PlayerInput()
         {
             ConsoleKeyInfo info = ReadKey();
             return info.Key;
-        }
-
-        public bool Exit()
-        {
-            ConsoleKeyInfo info = ReadKey();
-            return info.Key == ConsoleKey.Escape;
         }
     }
 }
