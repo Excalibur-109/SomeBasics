@@ -8,7 +8,7 @@ using static System.Console;
 
 namespace SmartGame
 {
-    public class Position
+    public struct Position
     {
         public int x, y;
         public Position(int x, int y) { this.x = x; this.y = y; }
@@ -97,46 +97,23 @@ namespace SmartGame
                 // 换行
                 WriteLine();
             }
+        }
 
-            //int i, j;
-            //for (i = 0; i < _border.y; ++i)
-            //{
-            //    if (i == 0 || i == _border.y - 1)
-            //    {
-            //        // 第一行 || 最后一行
-            //        for (j = 0; j < _border.x; ++j)
-            //        {
-            //            for (int k = 0; k < _offset.x; k++)
-            //            {
-            //                _BuildRow(' ');
-            //            }
-            //            _BuildRow(SYMBOL);
-            //        }
-            //        WriteLine();
-            //    }
-            //    else
-            //    {
-            //        // 中间
-            //        j = 0;
-            //        while (j < _border.x)
-            //        {
-            //            for (int k = 0; k < _offset.x; k++)
-            //            {
-            //                _BuildRow(' ');
-            //            }
-            //            if (j == 0 || j == _border.x - 1)
-            //            {
-            //                _BuildRow(SYMBOL);
-            //            }
-            //            else
-            //            {
-            //                _BuildRow(' ');
-            //            }
-            //            ++j;
-            //        }
-            //        WriteLine();
-            //    }
-            //}
+        public bool PositionValidate(Position pos)
+        {
+            return pos.x > 0 && pos.x < _border.x - 1 && pos.y > 0 && pos.y < _border.y - 1;
+        }
+
+        public MapObject Hit(Position p)
+        {
+            for (int i = 0; i < list.Count; ++i)
+            {
+                if (list[i].position.Equals(p))
+                {
+                    return list[i];
+                }
+            }
+            return null;
         }
 
         private void _BuildRow(char symbol)

@@ -19,10 +19,16 @@ namespace SmartGame
         }
 
         public abstract char Symbol();
+        public abstract void Interact(Player other);
     }
 
     public class Obstacle : MapObject
     {
+        public override void Interact(Player other)
+        {
+            other.SetHit("撞到了障碍物");
+        }
+
         public override char Symbol()
         {
             return 'O';
@@ -31,6 +37,18 @@ namespace SmartGame
 
     public class Character : MapObject
     {
+        private string _name = string.Empty;
+
+        public Character (string name)
+        {
+            _name = name;
+        }
+
+        public override void Interact(Player other)
+        {
+            other.SetHit(string.Format("Player你好，我是{0}", _name));
+        }
+
         public override char Symbol()
         {
             return 'N';
@@ -39,32 +57,64 @@ namespace SmartGame
 
     public class Player : MapObject
     {
+        private string hitInfo = string.Empty;
+
         public void UpdateInput(ConsoleKey key)
         {
+            Position p = position;
             switch (key)
             {
                 case ConsoleKey.W:
                 case ConsoleKey.UpArrow:
-                    --position.y;
+                    --p.y;
                     break;
                 case ConsoleKey.A:
                 case ConsoleKey.LeftArrow:
-                    --position.x;
+                    --p.x;
                     break;
                 case ConsoleKey.S:
                 case ConsoleKey.DownArrow:
-                    ++position.y;
+                    ++p.y;
                     break;
                 case ConsoleKey.D:
                 case ConsoleKey.RightArrow:
-                    ++position.x;
+                    ++p.x;
                     break;
+            }
+            if (Map.Instance.PositionValidate(p))
+            {
+                hitInfo = string.Empty;
+                MapObject obj = Map.Instance.Hit(p);
+                if (obj != null)
+                {
+                    // 交互
+                    obj.Interact(this);
+                }
+                else
+                {
+                    _position = p;
+                }
             }
         }
 
         public override char Symbol()
         {
             return 'P';
+        }
+
+        public override void Interact(Player other)
+        {
+        }
+
+        public void PrintHit()
+        {
+            WriteLine(hitInfo);
+        }
+
+
+        public void SetHit(string info)
+        {
+            hitInfo = info;
         }
     }
 }

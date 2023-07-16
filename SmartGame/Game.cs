@@ -37,15 +37,21 @@ namespace SmartGame
 
         private void GameLoop()
         {
-            //Obstacle o1 = new Obstacle();
-            //o1.SetPos(new Position(4, 5));
-            //Obstacle o2 = new Obstacle();
-            //o2.SetPos(new Position(11, 22));
-            //Obstacle o3 = new Obstacle();
-            //o3.SetPos(new Position(25, 23));
-            //Map.Instance.AddObject(o1);
-            //Map.Instance.AddObject(o2);
-            //Map.Instance.AddObject(o3);
+            Obstacle o1 = new Obstacle();
+            o1.SetPos(new Position(4, 5));
+            Obstacle o2 = new Obstacle();
+            o2.SetPos(new Position(11, 22));
+            Obstacle o3 = new Obstacle();
+            o3.SetPos(new Position(25, 23));
+            Map.Instance.AddObject(o1);
+            Map.Instance.AddObject(o2);
+            Map.Instance.AddObject(o3);
+            Character c1 = new Character("Jerry");
+            c1.SetPos(new Position(1, 1));
+            Character c2 = new Character("Tom");
+            c2.SetPos(new Position(15, 20));
+            Map.Instance.AddObject(c1);
+            Map.Instance.AddObject(c2);
             Player player = new Player();
             player.SetPos(new Position(15, 15));
             Map.Instance.AddObject(player);
@@ -66,6 +72,7 @@ namespace SmartGame
 
                 Map.Instance.Build();
                 WriteLine(player.position.ToString());
+                player.PrintHit();
             }
             WriteLine("Game Exit...");
         }
