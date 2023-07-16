@@ -19,9 +19,9 @@ namespace SmartGame
 
             while (key != ConsoleKey.Enter && key != ConsoleKey.Escape)
             {
-                Clear();
                 WriteLine("Press \"Enter\" to start Game(esc to exit):");
                 key = ReadKey().Key;
+                Clear();
             }
 
             switch (key)
