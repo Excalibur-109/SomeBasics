@@ -17,13 +17,18 @@ namespace SmartGame
         {
             return this.x == other.x && this.y == other.y;
         }
+
+        public override string ToString()
+        {
+            return string.Format("({0}, {1})", x, y);
+        }
     }
 
     public class Map : Singleton<Map>
     {
         const char SYMBOL = '*';
         private Position _border;
-        private readonly Position _offset = new Position(30, 30);
+        private readonly Position _offset = new Position(0, 0);
 
         List<MapObject> list = new List<MapObject>();
 
@@ -52,30 +57,26 @@ namespace SmartGame
         {
             Position p = new Position(0, 0);
             // 行偏移
-            while (p.x++ < _offset.y)
+            while (p.y++ < _offset.y)
             {
                 WriteLine();
             }
 
-            p.x = -1;
+            p.y = -1;
             // 打印地图每一行
-            while (p.x++ < _border.y - 1)
+            while (p.y++ < _border.y - 1)
             {
-                p.y = 0;
+                p.x = 0;
                 // 列偏移
-                while (p.y++ < _offset.x)
+                while (p.x++ < _offset.x)
                 {
                     _BuildRow(' ');
                 }
-                p.y = -1;
+                p.x = -1;
                 // 打印地图
-                while (p.y++ < _border.x - 1)
+                while (p.x++ < _border.x - 1)
                 {
-                    if (p.x == 0 || p.x == _border.y - 1)
-                    {
-                        _BuildRow(SYMBOL);
-                    }
-                    else if (p.y == 0 || p.y == _border.x - 1)
+                    if (p.y == 0 || p.y == _border.y - 1 || p.x == 0 || p.x == _border.x - 1)
                     {
                         _BuildRow(SYMBOL);
                     }

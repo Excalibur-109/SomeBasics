@@ -45,19 +45,19 @@ namespace SmartGame
             {
                 case ConsoleKey.W:
                 case ConsoleKey.UpArrow:
-                    --position.x;
+                    --position.y;
                     break;
                 case ConsoleKey.A:
                 case ConsoleKey.LeftArrow:
-                    --position.y;
+                    --position.x;
                     break;
                 case ConsoleKey.S:
                 case ConsoleKey.DownArrow:
-                    ++position.x;
+                    ++position.y;
                     break;
                 case ConsoleKey.D:
                 case ConsoleKey.RightArrow:
-                    ++position.y;
+                    ++position.x;
                     break;
             }
         }

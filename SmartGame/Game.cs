@@ -21,7 +21,7 @@ namespace SmartGame
             {
                 Clear();
                 WriteLine("Press \"Enter\" to start Game(esc to exit):");
-                key = PlayerInput();
+                key = ReadKey().Key;
             }
 
             switch (key)
@@ -65,14 +65,9 @@ namespace SmartGame
                 Clear();
 
                 Map.Instance.Build();
+                WriteLine(player.position.ToString());
             }
             WriteLine("Game Exit...");
-        }
-
-        private ConsoleKey PlayerInput()
-        {
-            ConsoleKeyInfo info = ReadKey();
-            return info.Key;
         }
     }
 }
