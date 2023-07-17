@@ -58,7 +58,9 @@ namespace SmartGame
             Map.Instance.AddObject(player);
             Map.Instance.SetBorder(new Position(30, 30));
             Boss b1 = new Boss("Grunt", 50, 5, 30);
+            b1.symbolSelf = 'Q';
             Boss b2 = new Boss("Ghost", 500, 50, 30);
+            b2.symbolSelf = 'W';
             b1.SetPos(new Position(14, 23));
             b2.SetPos(new Position(24, 13));
             Map.Instance.AddObject(b1);
@@ -71,7 +73,7 @@ namespace SmartGame
                 {
                     break;
                 }
-                else if (player.Isdead==true)
+                else if (player.Isdead)
                 {
                     break;
                 }

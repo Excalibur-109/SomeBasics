@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using static System.Console;
 
 namespace SmartGame
 {
-
-    
-
     public abstract class MapObject
     {
         protected Position _position;
@@ -56,17 +46,19 @@ namespace SmartGame
     {
         private int _goldCount;
         private int _num=1;
+
         public Obstacle(int goldCount)
         {
             _goldCount = goldCount;
         }
+
         public override void Interact(Player other)
         {
             _num--;
             other.SetHit("撞到了障碍物");
             Random ra = new Random();
-            double num=ra.NextDouble();
-            if (num>=0.5&&_num>=0)
+            double num = ra.NextDouble();
+            if (num >= 0.5 && _num >= 0)
             {
               other.gold += _goldCount;
               other.SetHit(string.Format("捡到一个宝箱,当前金币为：{0}",other.gold));
@@ -79,50 +71,42 @@ namespace SmartGame
             return 'O';
         }
     }
-    public class Enemy :MapObject
+
+    public abstract class Enemy : MapObject
     {
     
         protected string _name;
         protected int _hp;
         protected int _attack;
         protected int _gold;
-       
-        public override void Interact(Player other)
-        {
-            throw new NotImplementedException();
-        }
-
-        //public int hp { get { return _hp; } set { _hp = value; } }
-        //public int attack { get { return _attack; } set { _attack = value; } }
-        //public int gold { get { return _gold; } set { _gold = value; } }
-
-        //public string name { get { return _name; } set { _name = value; } }
 
         public override char Symbol()
         {
             return 'E';
         }
-        
-        //public override void Interact(Player other)
-        //{
-        //    other.SetHit(string.Format("遭遇了{0},开始战斗",_name));
-        //    other.hp -= attack;
-        //    hp -= other.attack;
-        //    hp = Math.Max(hp, 0);
-        //    other.hp = Math.Max(other.hp, 0);
-        //    other.SetHit(string.Format("{0}攻击了你，当前剩余HP{1},{2}当前HP为{3}", _name,other.hp,name,hp));
-        //    if (hp==0)
-        //    {
-        //        other.SetHit(string.Format("{0}已经死亡", _name));
-        //        //TODO死亡掉落金币
-        //    }
-        //}
+
+        public override void Interact(Player other)
+        {
+            other.SetHit(string.Format("遭遇了{0},开始战斗", _name));
+            other.hp -= _attack;
+            _hp -= other.attack;
+            _hp = Math.Max(_hp, 0);
+            other.hp = Math.Max(other.hp, 0);
+            other.SetHit(string.Format("{0}攻击了你，当前剩余HP{1},{2}当前HP为{3}", _name, other.hp, _name, _hp));
+            if (_hp == 0)
+            {
+                other.SetHit(string.Format("{0}已经死亡", _name));
+                //TODO死亡掉落金币
+            }
+        }
 
 
     }
 
     public class Boss : Enemy
     {
+        public char symbolSelf;
+
         public Boss(string name, int hp, int attack, int gold)
         {
             this._name = name;
@@ -132,7 +116,7 @@ namespace SmartGame
         }
         public override char Symbol()
         {
-            return 'B';
+            return symbolSelf;
         }
 
         public override void Interact(Player other)
