@@ -6,3 +6,11 @@ D:\ProjectBasic\Common\bin\Debug\Common.exe
 D:\ProjectBasic\Common\bin\Debug\Common.pdb
 D:\ProjectBasic\Common\obj\Debug\Common.exe
 D:\ProjectBasic\Common\obj\Debug\Common.pdb
+D:\CSharpTest\SomeBasics\Common\bin\Debug\Common.exe.config
+D:\CSharpTest\SomeBasics\Common\bin\Debug\Common.exe
+D:\CSharpTest\SomeBasics\Common\bin\Debug\Common.pdb
+D:\CSharpTest\SomeBasics\Common\obj\Debug\Common.csproj.AssemblyReference.cache
+D:\CSharpTest\SomeBasics\Common\obj\Debug\Common.csproj.SuggestedBindingRedirects.cache
+D:\CSharpTest\SomeBasics\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+D:\CSharpTest\SomeBasics\Common\obj\Debug\Common.exe
+D:\CSharpTest\SomeBasics\Common\obj\Debug\Common.pdb
